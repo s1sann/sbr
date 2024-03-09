@@ -27,3 +27,5 @@ bld/
 
 build/
 out/
+
+**/CMakeSettings.json
