@@ -7,7 +7,7 @@
 int width = 1000;
 int height = 1000;
 
-int is_in_set(std::complex< double > c)
+int in_set(std::complex< double > c)
 {
     std::complex< double > z(0, 0);
     for (int i = 0; i < 100; i++)
@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
             double x = std::lerp(-2.0, 2.0, i);
             double y = std::lerp(-2.0, 2.0, j);
 
-            int res = is_in_set(std::complex< double >(x, y));
+            int res = in_set(std::complex< double >(x, y));
             if (res == false)
             {
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
@@ -61,6 +61,7 @@ int main(int argc, char* argv[])
             else
             {
                 SDL_SetRenderDrawColor(renderer, 10 * res % 255, 10 * res % 255, 10 * res % 255, 255);
+                //SDL_SetRenderDrawColor( renderer, 255, 255, 255, 255 );
                 SDL_RenderDrawPointF(renderer, i * width / 2, j * height / 2);
             }
         }
