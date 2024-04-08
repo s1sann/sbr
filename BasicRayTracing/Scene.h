@@ -37,7 +37,7 @@ public:
 };
 
 class Triangle : public Shape {
-private:
+public:
     vec3     p1, p2, p3;
     Material material;
 
@@ -53,7 +53,7 @@ public:
 };
 
 class Sphere : public Shape {
-private:
+public:
     vec3     center;
     double   radius;
     Material material;
