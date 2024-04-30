@@ -12,11 +12,10 @@ struct Light
 
 struct Material
 {
-    Material( const float& r, const Vec4f& a, const Vec3f& color, const float& spec ) : refractive_index( r ), albedo( a ), diffuse_color( color ), specular_exponent( spec ) {}
-    Material() : refractive_index( 1 ), albedo( 1, 0, 0, 0 ), diffuse_color(), specular_exponent() {}
+    Material( const Vec2f& a, const Vec3f& color, const float& spec ) : albedo( a ), diffuse_color( color ), specular_exponent( spec ) {}
+    Material() : albedo( 1, 0 ), diffuse_color(), specular_exponent() {}
 
-    float refractive_index;
-    Vec4f albedo;
+    Vec2f albedo;
     Vec3f diffuse_color;
     float specular_exponent;
 };
@@ -48,12 +47,10 @@ struct Sphere
     }
 };
 
-Vec3f reflect( const Vec3f& I, const Vec3f& N );
-
-Vec3f refract( const Vec3f& I, const Vec3f& N, const float& refractive_index );
+Vec3f reflect(const Vec3f& I, const Vec3f& N);
 
 bool scene_intersect( const Vec3f& orig, const Vec3f& dir, const std::vector< Sphere >& spheres, Vec3f& hit, Vec3f& N, Material& material );
 
-Vec3f cast_ray( const Vec3f& orig, const Vec3f& dir, const std::vector< Sphere >& spheres, const std::vector< Light >& lights, size_t depth = 0 );
+Vec3f cast_ray( const Vec3f& orig, const Vec3f& dir, const std::vector< Sphere >& spheres, const std::vector< Light >& lights );
 
 #endif  // !SBR_SCENE_H
